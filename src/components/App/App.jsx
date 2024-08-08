@@ -2,19 +2,27 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
+import ShoppingList from '../ShoppingList/ShoppingList.jsx';
+import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
 import './App.css';
 
 
 function App() {
 
     let [suppliesList, setSuppliesList] = useState([]);
+    
+    
     useEffect(() => {
         getSupplies()
       }, [])
     
       const getSupplies = () => {
-        axios.get('/api/shopping-list')
+        axios({
+            method: 'GET',
+            url:'/api/shopping-list'
+      })
           .then(response => {
+            console.log(response.data)
             setSuppliesList(response.data)
           })
           .catch(err => {
@@ -26,12 +34,8 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <ShoppingForm />
-           <ShoppingList />
-           <ShoppingItem />
-            <main>
-                <p>Under Construction...</p>
-            </main>
+            <ShoppingForm getSupplies={getSupplies}/>
+            <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
         </div>
     );
 }
