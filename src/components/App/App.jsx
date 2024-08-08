@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from '../Header/Header.jsx'
 import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
+import Footer from '../Footer/Footer.jsx';
 import './App.css';
 
 
@@ -36,6 +37,7 @@ function App() {
             <Header />
             <ShoppingForm getSupplies={getSupplies}/>
             <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
+            <Footer />
         </div>
     );
 }
