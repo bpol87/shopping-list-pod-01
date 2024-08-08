@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
+import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
 import './App.css';
 
@@ -16,8 +17,12 @@ function App() {
       }, [])
     
       const getSupplies = () => {
-        axios.get('/api/shopping-list')
+        axios({
+            method: 'GET',
+            url:'/api/shopping-list'
+      })
           .then(response => {
+            console.log(response.data)
             setSuppliesList(response.data)
           })
           .catch(err => {
@@ -30,9 +35,7 @@ function App() {
         <div className="App">
             <Header />
             <ShoppingForm getSupplies={getSupplies}/>
-            <main>
-                <p>Under Construction...</p>
-            </main>
+            <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
         </div>
     );
 }
