@@ -26,6 +26,9 @@ function App() {
     return (
         <div className="App">
             <Header />
+            <ShoppingForm />
+           <ShoppingList />
+           <ShoppingItem />
             <main>
                 <p>Under Construction...</p>
             </main>
