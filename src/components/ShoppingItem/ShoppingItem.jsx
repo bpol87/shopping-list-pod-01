@@ -32,13 +32,13 @@ function ShoppingItem ({item, getSupplies}) {
     }
 
     return (
-        <div>
+        <div className= {item.isPurchased === true ? 'teal-background' : 'displayed'}>
             <h4>{item.name}</h4>
-            <p>{item.quantity} {item.unit}</p>
+            <p className= "quantityAndUnit">{item.quantity} {item.unit}</p>
             <div>
                 <p className={item.isPurchased === true ? 'reveal' : 'hide'}>Purchased</p>
-                <button className={item.isPurchased === true ? 'purchased' : ''} onClick={itemPurchased}>Buy</button>
-                <button className={item.isPurchased === true ? 'purchased' : ''} onClick={deleteItem}>Delete</button>
+                <button className= {item.isPurchased === true ? 'purchased' : 'buyButton'} onClick={itemPurchased}>Buy</button>
+                <button className={item.isPurchased === true ? 'purchased' : 'deleteButton'} onClick={deleteItem}>Delete</button>
             </div>
         </div>
     )

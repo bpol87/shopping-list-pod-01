@@ -36,9 +36,9 @@ console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
     }
 
     return (
-        <>
+        <div className= "shoppingForm">
             <h2>Add an Item:</h2>
-            <form onSubmit={addItem}>
+           <form className="shoppingInputs"onSubmit={addItem}>
             <label htmlFor="item-input">Item:</label>
                 <input
                     id="item-input"
@@ -65,7 +65,7 @@ console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
                 <button>Save</button>
                 <p id="caption">* Required Field</p>
             </form>
-        </>
+        </div>
     )
 }
 
