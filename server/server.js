@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const shoppingListRouter = require('./routes/shoppingList.router.js')
+const shoppingListRouter = require('./routes/shoppingList.router')
 const PORT = process.env.PORT || 5001;
 
 /** ---------- MIDDLEWARE ---------- **/
