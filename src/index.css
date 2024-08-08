@@ -15,3 +15,19 @@ body {
 .purchased {
   display: none;
 }
+
+#item-input:invalid {
+  border: 2px solid red;
+}
+
+#quantity-input:invalid {
+  border: 2px solid red;
+}
+
+sup {
+  color: red;
+}
+
+#caption {
+  font-size: 10pt;
+}

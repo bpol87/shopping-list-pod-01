@@ -7,10 +7,12 @@ function ShoppingForm ({getSupplies}) {
     let [itemInput, setItemInput] = useState('');
     let [quantityInput, setQuantityInput] = useState('');
     let [unitInput, setUnitInput] = useState('');
-
+console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
     const addItem = (event) => {
         event.preventDefault();
         console.log('in addItem function. inputs are: ', itemInput, quantityInput, unitInput)
+
+        
 
         axios({
             method: 'POST',
@@ -37,25 +39,31 @@ function ShoppingForm ({getSupplies}) {
         <>
             <h2>Add an Item:</h2>
             <form onSubmit={addItem}>
-            <h5>Item:</h5>
+            <label htmlFor="item-input">Item:</label>
                 <input
+                    id="item-input"
                     value={itemInput}
                     onChange={(event) => {setItemInput(event.target.value)}}
                     type="text"
-                    placeholder=""/>
-                <h5>Quantity</h5>
+                    placeholder=""
+                    required /> <sup>*</sup>
+                <label htmlFor="quantity-input">Quantity:</label>
                     <input
+                        id="quantity-input"
                         value={quantityInput}
                         onChange={(event) => {setQuantityInput(event.target.value)}}
                         type="text"
-                        placeholder=""/>
-                <h5>Unit</h5>
+                        placeholder=""
+                        required /> <sup>*</sup>
+                <label htmlFor="unit-input">Unit:</label>
                     <input
+                    id="unit-input"
                         value={unitInput}
                         onChange={(event) => {setUnitInput(event.target.value)}}
                         type="text"
                         placeholder=""/>
                 <button>Save</button>
+                <p id="caption">* Required Field</p>
             </form>
         </>
     )

@@ -1,4 +1,5 @@
 import ShoppingItem from "../ShoppingItem/ShoppingItem.jsx";
+import axios from "axios";
 
 function ShoppingList({ suppliesList, getSupplies }) {
     const resetList = () => {
@@ -32,6 +33,7 @@ function ShoppingList({ suppliesList, getSupplies }) {
 
     return (
         <>
+        <h2>Shopping List</h2>
         <div>
             <button onClick={resetList}>Reset</button>
             <button onClick={clearList}>Clear</button>
