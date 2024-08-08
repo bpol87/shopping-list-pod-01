@@ -6,6 +6,7 @@ import './App.css';
 
 
 function App() {
+
     let [suppliesList, setSuppliesList] = useState([]);
     useEffect(() => {
         getSupplies()
@@ -33,3 +34,4 @@ function App() {
 }
 
 export default App;
+
