@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
 import ShoppingList from '../ShoppingList/ShoppingList.jsx';
+import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
 import './App.css';
 
 
 function App() {
 
     let [suppliesList, setSuppliesList] = useState([]);
+    
+    
     useEffect(() => {
         getSupplies()
       }, [])
@@ -31,8 +34,8 @@ function App() {
     return (
         <div className="App">
             <Header />
-            {/* <ShoppingForm /> */}
-           <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
+            <ShoppingForm getSupplies={getSupplies}/>
+            <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
         </div>
     );
 }
