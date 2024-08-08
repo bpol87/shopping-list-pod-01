@@ -2,12 +2,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
+import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
 import './App.css';
 
 
 function App() {
 
     let [suppliesList, setSuppliesList] = useState([]);
+    
+    
     useEffect(() => {
         getSupplies()
       }, [])
@@ -26,9 +29,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <ShoppingForm />
-           <ShoppingList />
-           <ShoppingItem />
+            <ShoppingForm getSupplies={getSupplies}/>
             <main>
                 <p>Under Construction...</p>
             </main>
