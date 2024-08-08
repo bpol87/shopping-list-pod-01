@@ -17,7 +17,7 @@ function ShoppingItem ({item, getSupplies}) {
             if (result.isConfirmed) {
                 axios({
                     method: 'DELETE',
-                    url: `/api/shopping-list/${item.id}`
+                    url: `/api/shopping-list/delete/${item.id}`
                 })
                 .then(response => {
                     getSupplies();
