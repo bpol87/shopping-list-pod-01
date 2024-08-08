@@ -3,15 +3,14 @@
 
 -- Database name is: fs-react-shopping
 
-CREATE TABLE shoppinglist (
+CREATE TABLE shoppingList (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(80) NOT NULL,
     "quantity" DECIMAL(65, 2) NOT NULL,
-    "unit" VARCHAR(20),
-    "isPurchased" BOOLEAN DEFAULT false
-    );
+    "unit" VARCHAR(20)
+);
 
-INSERT INTO shoppinglist
+INSERT INTO shoppingList
 ("name", "quantity", "unit")
 VALUES
 ('bananas', 1, 'bunch'),
