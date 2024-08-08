@@ -1,4 +1,5 @@
 import ShoppingItem from "../ShoppingItem/ShoppingItem.jsx";
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 function ShoppingList({ suppliesList, getSupplies }) {
@@ -17,13 +18,30 @@ function ShoppingList({ suppliesList, getSupplies }) {
     };
 
     const clearList = () => {
-        axios({
-            method: 'DELETE',
-            url: '/api/shopping-list/clear'
-        })
-        .then ((res) => {
-            getSupplies();
-        })
+        Swal.fire({
+            title: "You're about to obliterate your entire list!!",
+            text: "You won't be able to undo this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#04bb99",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, obliterate my shopping list!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios({
+                    method: 'DELETE',
+                    url: '/api/shopping-list/clear'
+                })
+                .then ((res) => {
+                    getSupplies();
+                })
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your list has been obliterated!",
+                icon: "success"
+              });
+            }
+          })
         .catch((err) => {
             alert('Error Clearing List');
             console.log(err);
