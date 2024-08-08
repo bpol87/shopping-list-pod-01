@@ -31,17 +31,17 @@ function ShoppingList({ suppliesList, getSupplies }) {
 
 
     return (
-        <>
-        <div>
-            <button onClick={resetList}>Reset</button>
+        <div className= "shoppingListLocation">
+        <div className="resetClearButtons">
+            <button className="resetButton" onClick={resetList}>Reset</button>
             <button onClick={clearList}>Clear</button>
         </div>
-        <div>
+        <div className="shoppingList">
             {suppliesList.map((item) => {
                 return <ShoppingItem key={item.id} item={item} getSupplies={getSupplies} />
             })}
         </div>
-        </>
+        </div>
     )
 };
 

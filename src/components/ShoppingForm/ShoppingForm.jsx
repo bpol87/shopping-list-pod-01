@@ -34,9 +34,9 @@ function ShoppingForm ({getSupplies}) {
     }
 
     return (
-        <>
+        <div className= "shoppingForm">
             <h2>Add an Item:</h2>
-            <form onSubmit={addItem}>
+            <form className="shoppingInputs"onSubmit={addItem}>
             <h5>Item:</h5>
                 <input
                     value={itemInput}
@@ -55,9 +55,9 @@ function ShoppingForm ({getSupplies}) {
                         onChange={(event) => {setUnitInput(event.target.value)}}
                         type="text"
                         placeholder=""/>
-                <button>Save</button>
+                <button className="saveButton">Save</button>
             </form>
-        </>
+        </div>
     )
 }
 

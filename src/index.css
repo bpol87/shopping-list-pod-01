@@ -1,11 +1,14 @@
 body {
-  margin: 0;
+  margin: 0px;
   padding: 0;
   font-family: sans-serif;
 }
 
 .reveal {
   display: block;
+  font-weight: bold;
+  color: rgb(137, 13, 13);
+  margin: 2px;
 }
 
 .hide {
@@ -14,4 +17,85 @@ body {
 
 .purchased {
   display: none;
+
+}
+
+.displayed {
+  padding: 10px;
+}
+
+.teal-background {
+  background-color: rgb(95, 151, 151);
+  padding: 10px;
+
+}
+
+.buyButton {
+  background-color: rgb(31, 110, 31);
+  font-size: 20px;
+  padding: 5px 5px;
+  color: white;
+  border-radius: 8px;
+  border:2px solid black;
+}
+
+.deleteButton {
+  background-color: rgb(145, 35, 10);
+  font-size: 20px;
+  padding: 5px 5px;
+  color: white;
+  border-radius: 8px;
+  border:2px solid black;
+}
+
+.resetClearButtons {
+  margin: 30px;
+}
+
+.saveButton {
+  background-color: darkslategray;
+  font-size: 20px;
+  padding: 5px 5px;
+  color: white;
+  border-radius: 8px;
+  border:2px solid black;
+  display: flex;
+}
+
+.shoppingInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.footerContents {
+  display: flex;
+  justify-content: center;
+  background: rgb(244,250,251);
+  background: radial-gradient(circle, rgba(244,250,251,1) 0%, rgba(13,149,150,1) 100%);
+  
+}
+
+.shoppingListLocation {
+  margin: 20px;
+}
+
+.shoppingForm {
+  margin: 20px;
+}
+
+h4 {
+  margin: 2px;
+}
+
+.quantityAndUnit {
+  margin: 2px;
+}
+
+.shoppingList {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px 30px;
+  flex-wrap: wrap;
+
 }
