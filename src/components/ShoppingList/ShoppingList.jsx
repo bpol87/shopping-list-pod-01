@@ -1,5 +1,6 @@
 import ShoppingItem from "../ShoppingItem/ShoppingItem.jsx";
 import Swal from 'sweetalert2';
+import axios from "axios";
 
 function ShoppingList({ suppliesList, getSupplies }) {
     const resetList = () => {
@@ -49,17 +50,18 @@ function ShoppingList({ suppliesList, getSupplies }) {
 
 
     return (
-        <>
-        <div>
-            <button onClick={resetList}>Reset</button>
+        <div className= "shoppingListLocation">
+           <h2>Shopping List</h2>
+        <div className="resetClearButtons">
+            <button className="resetButton" onClick={resetList}>Reset</button>
             <button onClick={clearList}>Clear</button>
         </div>
-        <div>
+        <div className="shoppingList">
             {suppliesList.map((item) => {
                 return <ShoppingItem key={item.id} item={item} getSupplies={getSupplies} />
             })}
         </div>
-        </>
+        </div>
     )
 };
 

@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 })
 
 // DELETE route
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
     console.log('DELETE /api/shopping-list/:id received a request!')
     
     const sqlText = `
@@ -69,7 +69,7 @@ router.delete('/clear', (req, res) => {
     console.log('DELETE /api/shopping-list/clear received a request!')
     
     const sqlText = `
-          DELETE * FROM "shoppinglist";
+          DELETE FROM "shoppinglist";
       `;
 
     pool
