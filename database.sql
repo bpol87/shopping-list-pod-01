@@ -10,7 +10,7 @@ CREATE TABLE shoppingList (
     "unit" VARCHAR(20)
 );
 
-INSERT INTO "shoppingList"
+INSERT INTO shoppingList
 ("name", "quantity", "unit")
 VALUES
 ('bananas', 1, 'bunch'),
