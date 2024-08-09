@@ -53,6 +53,15 @@ body {
   border:2px solid black;
 }
 
+.editButton {
+  background-color: blue;
+  font-size: 20px;
+  padding: 5px 5px;
+  color: white;
+  border-radius: 8px;
+  border:2px solid black;
+}
+
 .deleteButton {
   background-color: rgb(145, 35, 10);
   font-size: 20px;

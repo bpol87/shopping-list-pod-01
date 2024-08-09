@@ -61,7 +61,7 @@ function ShoppingItem({ item, getSupplies, setItemToEdit }) {
                 <p className={item.isPurchased === true ? 'reveal' : 'hide'}>Purchased</p>
                 <button className= {item.isPurchased === true ? 'purchased' : 'buyButton'} onClick={itemPurchased}>Buy</button>
                 <button className={item.isPurchased === true ? 'purchased' : 'deleteButton'} onClick={deleteItem}>Delete</button>
-                <button onClick={editItem}>Edit</button>
+                <button className="editButton" onClick={editItem}>Edit</button>
             </div>
         </div>
     );
