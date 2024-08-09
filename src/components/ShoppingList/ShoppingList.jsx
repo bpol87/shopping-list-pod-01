@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem.jsx";
 import Swal from 'sweetalert2';
 import axios from "axios";
@@ -48,6 +49,15 @@ function ShoppingList({ suppliesList, getSupplies }) {
         })
     }
 
+    let [alertState, setAlertState] = useState(true);
+    
+    function showAlert () {
+        setAlertState(true);
+    }
+
+    function closeAlert () {
+        setAlertState(false);
+    }
 
     return (
         <div className= "shoppingListLocation">
@@ -55,6 +65,9 @@ function ShoppingList({ suppliesList, getSupplies }) {
         <div className="resetClearButtons">
             <button className="resetButton" onClick={resetList}>Reset</button>
             <button onClick={clearList}>Clear</button>
+        </div>
+        <div id="alert" className={alertState === true ? 'alert-show' : 'alert-hide' }>
+            <p> ✓ Bananas has succesfully been updated!</p><button id="close-alert" onClick={closeAlert}>❌</button>
         </div>
         <div className="shoppingList">
             {suppliesList.map((item) => {

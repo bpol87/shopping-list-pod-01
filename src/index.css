@@ -27,7 +27,7 @@ body {
   border: 2px solid red;
 }
 
-sup {
+.error-valid {
   color: red;
 }
 
@@ -78,8 +78,9 @@ sup {
 
 .shoppingInputs {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+  width: 300px;
 }
 
 .footerContents {
@@ -88,6 +89,29 @@ sup {
   background: rgb(244,250,251);
   background: radial-gradient(circle, rgba(244,250,251,1) 0%, rgba(13,149,150,1) 100%);
   
+}
+
+input {
+  padding: 0px;
+}
+
+#quantunit {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px
+
+}
+#quant-child {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-right: 15px;
+}
+
+#unit-child {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
 .shoppingListLocation {
@@ -112,4 +136,25 @@ h4 {
   gap: 10px 30px;
   flex-wrap: wrap;
 
+}
+
+#alert {
+  border: 1px solid darkgreen;
+
+  padding: 10px;
+  background-color: mintcream;
+  color: green;
+}
+
+#close-alert {
+  border: none;
+  background: none;
+}
+
+.alert-show{
+  display: flex;
+}
+
+.alert-hide {
+  display: none;
 }

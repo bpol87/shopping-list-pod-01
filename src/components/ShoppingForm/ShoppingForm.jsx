@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-function ShoppingForm ({getSupplies}) {
+function ShoppingForm({ getSupplies }) {
 
     let [itemInput, setItemInput] = useState('');
     let [quantityInput, setQuantityInput] = useState('');
     let [unitInput, setUnitInput] = useState('');
-console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
+    console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
     const addItem = (event) => {
         event.preventDefault();
         console.log('in addItem function. inputs are: ', itemInput, quantityInput, unitInput)
 
-        
+
 
         axios({
             method: 'POST',
@@ -23,45 +23,52 @@ console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
                 unit: unitInput
             }
         })
-        .then((response) => {
-            setItemInput('');
-            setQuantityInput('');
-            setUnitInput('');
+            .then((response) => {
+                setItemInput('');
+                setQuantityInput('');
+                setUnitInput('');
 
-            getSupplies();
-        })
-        .catch ((error) => {
-            console.log('Error in POST response from server: ', error);
-        })
+                getSupplies();
+            })
+            .catch((error) => {
+                console.log('Error in POST response from server: ', error);
+            })
     }
 
     return (
-        <div className= "shoppingForm">
+        <div className="shoppingForm">
             <h2>Add an Item:</h2>
-           <form className="shoppingInputs"onSubmit={addItem}>
-            <label htmlFor="item-input">Item:</label>
+            <form className="shoppingInputs" onSubmit={addItem}>
+                <label htmlFor="item-input">Item: <span class="error-valid">*</span></label>
                 <input
                     id="item-input"
                     value={itemInput}
-                    onChange={(event) => {setItemInput(event.target.value)}}
+                    onChange={(event) => { setItemInput(event.target.value) }}
                     type="text"
                     placeholder=""
-                    required /> <sup>*</sup>
-                <label htmlFor="quantity-input">Quantity:</label>
+                    required />
+                
+                <div id="quantunit">
+                    <div id="quant-child">
+                <label htmlFor="quantity-input">Quantity: <span class="error-valid">*</span></label>
                     <input
                         id="quantity-input"
                         value={quantityInput}
-                        onChange={(event) => {setQuantityInput(event.target.value)}}
+                        onChange={(event) => { setQuantityInput(event.target.value) }}
                         type="text"
                         placeholder=""
-                        required /> <sup>*</sup>
-                <label htmlFor="unit-input">Unit:</label>
-                    <input
-                    id="unit-input"
-                        value={unitInput}
-                        onChange={(event) => {setUnitInput(event.target.value)}}
-                        type="text"
-                        placeholder=""/>
+                        required /> 
+                   </div>
+                    <div id="unit-child">
+                        <label htmlFor="unit-input">Unit:</label>
+                        <input
+                            id="unit-input"
+                            value={unitInput}
+                            onChange={(event) => { setUnitInput(event.target.value) }}
+                            type="text"
+                            placeholder="" />
+                    </div>
+                </div>
                 <button>Save</button>
                 <p id="caption">* Required Field</p>
             </form>
