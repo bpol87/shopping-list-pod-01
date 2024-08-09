@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../Header/Header.jsx';
 import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
+import Footer from '../Footer/Footer.jsx';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Header />
             <ShoppingForm getSupplies={getSupplies} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} />
             <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} setItemToEdit={setItemToEdit} />
+            <Footer />
         </div>
     );
 }

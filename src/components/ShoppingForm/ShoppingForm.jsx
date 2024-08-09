@@ -61,35 +61,40 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
     };
 
     return (
-        <>
+        <<div className= "shoppingForm">
             <h2>{itemToEdit ? 'Edit Item' : 'Add an Item'}:</h2>
-            <form onSubmit={addItem}>
-                <h5>Item:</h5>
+            <form className="shoppingInputs" onSubmit={addItem}>
+        
+            <label htmlFor="item-input">Item:</label>
                 <input
+                    id="item-input"
                     value={itemInput}
                     onChange={(event) => setItemInput(event.target.value)}
                     type="text"
                     placeholder=""
-                />
-                <h5>Quantity</h5>
-                <input
-                    value={quantityInput}
-                    onChange={(event) => setQuantityInput(event.target.value)}
-                    type="text"
-                    placeholder=""
-                />
-                <h5>Unit</h5>
-                <input
-                    value={unitInput}
-                    onChange={(event) => setUnitInput(event.target.value)}
-                    type="text"
-                    placeholder=""
-                />
-                <button>{itemToEdit ? 'Update' : 'Save'}</button>
+                    required /> <sup>*</sup>
+                <label htmlFor="quantity-input">Quantity:</label>
+                    <input
+                        id="quantity-input"
+                        value={quantityInput}
+                        onChange={(event) => {setQuantityInput(event.target.value)}}
+                        type="text"
+                        placeholder=""
+                        required /> <sup>*</sup>
+                <label htmlFor="unit-input">Unit:</label>
+                    <input
+                    id="unit-input"
+                        value={unitInput}
+                        onChange={(event) => {setUnitInput(event.target.value)}}
+                        type="text"
+                        placeholder=""/>
+                <button>Save</button>
+                <p id="caption">* Required Field</p>
+    <button>{itemToEdit ? 'Update' : 'Save'}</button>
                 {itemToEdit && <button onClick={resetForm}>Cancel</button>}
             </form>
-        </>
-    );
+        </div>
+    )
 }
 
 export default ShoppingForm;

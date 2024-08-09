@@ -2,7 +2,6 @@
 
 const express = require('express')
 const pool = require('../modules/pool.js')
-
 const router = express.Router()
 
 // GET /api/shoppingList
@@ -47,9 +46,9 @@ router.post('/', (req, res) => {
 })
 
 // DELETE route
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
     console.log('DELETE /api/shopping-list/:id received a request!')
-
+    
     const sqlText = `
           DELETE FROM "shoppinglist"
               WHERE id = $1;
@@ -68,9 +67,9 @@ router.delete('/:id', (req, res) => {
 
 router.delete('/clear', (req, res) => {
     console.log('DELETE /api/shopping-list/clear received a request!')
-
+    
     const sqlText = `
-          DELETE * FROM "shoppinglist";
+          DELETE FROM "shoppinglist";
       `;
 
     pool
