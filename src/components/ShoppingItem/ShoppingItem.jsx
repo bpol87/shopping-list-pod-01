@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 import '../../../src/index.css';
 import Swal from 'sweetalert2';
 
-function ShoppingItem ({item, getSupplies}) {
+function ShoppingItem({ item, getSupplies, setItemToEdit }) {
 
     const deleteItem = () => {
         Swal.fire({
@@ -17,7 +17,7 @@ function ShoppingItem ({item, getSupplies}) {
             if (result.isConfirmed) {
                 axios({
                     method: 'DELETE',
-                    url: `/api/shopping-list/${item.id}`
+                    url: `/api/shopping-list/delete/${item.id}`
                 })
                 .then(response => {
                     getSupplies();
@@ -37,16 +37,20 @@ function ShoppingItem ({item, getSupplies}) {
     const itemPurchased = () => {
         axios({
             method: 'PUT',
-            url: `/api/shopping-list/buy/${item.id}`
+            url: `/api/shopping-list/buy/${item.id}`,
         })
-        .then(response => {
-            getSupplies();
-        })
-        .catch(err => {
-            alert('Error Updating Item')
-            console.log (err);
-        })
-    }
+            .then((response) => {
+                getSupplies();
+            })
+            .catch((err) => {
+                alert('Error Updating Item');
+                console.log(err);
+            });
+    };
+
+    const editItem = () => {
+        setItemToEdit(item);
+    };
 
     return (
         <div className= {item.isPurchased === true ? 'teal-background' : 'displayed'}>
@@ -56,10 +60,10 @@ function ShoppingItem ({item, getSupplies}) {
                 <p className={item.isPurchased === true ? 'reveal' : 'hide'}>Purchased</p>
                 <button className= {item.isPurchased === true ? 'purchased' : 'buyButton'} onClick={itemPurchased}>Buy</button>
                 <button className={item.isPurchased === true ? 'purchased' : 'deleteButton'} onClick={deleteItem}>Delete</button>
+                <button onClick={editItem}>Edit</button>
             </div>
         </div>
-    )
-
+    );
 };
 
 export default ShoppingItem;
