@@ -64,7 +64,7 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
         <div className="shoppingForm">
              <h2>{itemToEdit ? 'Edit Item' : 'Add an Item'}:</h2>
             <form className="shoppingInputs" onSubmit={addItem}>
-                <label htmlFor="item-input">Item: <span class="error-valid">*</span></label>
+                <label htmlFor="item-input">Item: <span className="error-valid">*</span></label>
                 <input
                     id="item-input"
                     value={itemInput}
@@ -75,7 +75,7 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
                 
                 <div id="quantunit">
                     <div id="quant-child">
-                <label htmlFor="quantity-input">Quantity: <span class="error-valid">*</span></label>
+                <label htmlFor="quantity-input">Quantity: <span className="error-valid">*</span></label>
                     <input
                         id="quantity-input"
                         value={quantityInput}
@@ -94,7 +94,6 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
                             placeholder="" />
                     </div>
                 </div>
-                <button>Save</button>
                 <p id="caption">* Required Field</p>
     <button>{itemToEdit ? 'Update' : 'Save'}</button>
                 {itemToEdit && <button onClick={resetForm}>Cancel</button>}

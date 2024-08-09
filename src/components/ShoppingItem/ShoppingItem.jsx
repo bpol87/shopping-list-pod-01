@@ -50,6 +50,7 @@ function ShoppingItem({ item, getSupplies, setItemToEdit }) {
 
     const editItem = () => {
         setItemToEdit(item);
+
     };
 
     return (

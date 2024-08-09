@@ -49,15 +49,6 @@ function ShoppingList({ suppliesList, getSupplies, setItemToEdit }) {
         })
     }
 
-    let [alertState, setAlertState] = useState(true);
-    
-    function showAlert () {
-        setAlertState(true);
-    }
-
-    function closeAlert () {
-        setAlertState(false);
-    }
 
     return (
         <div className= "shoppingListLocation">
@@ -66,12 +57,9 @@ function ShoppingList({ suppliesList, getSupplies, setItemToEdit }) {
             <button className="resetButton" onClick={resetList}>Reset</button>
             <button onClick={clearList}>Clear</button>
         </div>
-        <div id="alert" className={alertState === true ? 'alert-show' : 'alert-hide' }>
-            <p> ✓ Bananas has succesfully been updated!</p><button id="close-alert" onClick={closeAlert}>❌</button>
-        </div>
         <div className="shoppingList">
             {suppliesList.map((item) => {
-                return <ShoppingItem key={item.id} item={item} getSupplies={getSupplies} />
+                return <ShoppingItem key={item.id} item={item} getSupplies={getSupplies} setItemToEdit={setItemToEdit} />
             })}
         </div>
         </div>
