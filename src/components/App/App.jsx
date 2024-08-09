@@ -1,46 +1,45 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Header from '../Header/Header.jsx'
+import Header from '../Header/Header.jsx';
 import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import ShoppingForm from '../ShoppingForm/ShoppingForm.jsx';
 import Footer from '../Footer/Footer.jsx';
 import './App.css';
 
-
 function App() {
+    const [suppliesList, setSuppliesList] = useState([]);
+    const [itemToEdit, setItemToEdit] = useState(null);
 
-    let [suppliesList, setSuppliesList] = useState([]);
-    
-    
     useEffect(() => {
-        getSupplies()
-      }, [])
-    
-      const getSupplies = () => {
+        getSupplies();
+    }, []);
+
+    const getSupplies = () => {
         axios({
             method: 'GET',
-            url:'/api/shopping-list'
-      })
-          .then(response => {
-            console.log(response.data)
-            setSuppliesList(response.data)
-          })
-          .catch(err => {
-            alert('error getting supplies');
-            console.log(err);
-          })
-      }
+            url: '/api/shopping-list'
+        })
+            .then(response => {
+                setSuppliesList(response.data);
+            })
+            .catch(err => {
+                alert('Error getting supplies');
+                console.log(err);
+            });
+    };
 
     return (
         <div className="App">
             <Header />
-            <ShoppingForm getSupplies={getSupplies}/>
-            <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} />
+            <ShoppingForm getSupplies={getSupplies} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} />
+            <ShoppingList suppliesList={suppliesList} getSupplies={getSupplies} setItemToEdit={setItemToEdit} />
             <Footer />
         </div>
     );
 }
 
 export default App;
+
+
+
 

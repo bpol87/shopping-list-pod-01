@@ -2,19 +2,19 @@ import ShoppingItem from "../ShoppingItem/ShoppingItem.jsx";
 import Swal from 'sweetalert2';
 import axios from "axios";
 
-function ShoppingList({ suppliesList, getSupplies }) {
+function ShoppingList({ suppliesList, getSupplies, setItemToEdit }) {
     const resetList = () => {
         axios({
             method: 'PUT',
             url: 'api/shopping-list/reset'
         })
-        .then((res) => {
-            getSupplies();
-        })
-        .catch((err) => {
-            alert('Error Resetting List');
-            console.log(err)
-        })
+            .then((res) => {
+                getSupplies();
+            })
+            .catch((err) => {
+                alert('Error Resetting List');
+                console.log(err);
+            })
     };
 
     const clearList = () => {
@@ -66,6 +66,3 @@ function ShoppingList({ suppliesList, getSupplies }) {
 };
 
 export default ShoppingList;
-
-// The `Reset` button should clear the purchased status from all items, allowing the list to be re-used. 
-// The `Clear` button should remove all items from the list, deleting them from the database.

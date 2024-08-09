@@ -1,49 +1,75 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
+    const [itemInput, setItemInput] = useState('');
+    const [quantityInput, setQuantityInput] = useState('');
+    const [unitInput, setUnitInput] = useState('');
 
-function ShoppingForm ({getSupplies}) {
+    useEffect(() => {
+        if (itemToEdit) {
+            setItemInput(itemToEdit.name);
+            setQuantityInput(itemToEdit.quantity);
+            setUnitInput(itemToEdit.unit);
+        }
+    }, [itemToEdit]);
 
-    let [itemInput, setItemInput] = useState('');
-    let [quantityInput, setQuantityInput] = useState('');
-    let [unitInput, setUnitInput] = useState('');
-console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
     const addItem = (event) => {
         event.preventDefault();
-        console.log('in addItem function. inputs are: ', itemInput, quantityInput, unitInput)
+        if (itemToEdit) {
+            axios({
+                method: 'PUT',
+                url: `/api/shopping-list/edit/${itemToEdit.id}`,
+                data: {
+                    name: itemInput,
+                    quantity: quantityInput,
+                    unit: unitInput,
+                },
+            })
+                .then((response) => {
+                    resetForm();
+                    getSupplies();
+                })
+                .catch((error) => {
+                    console.log('Error in PUT response from server: ', error);
+                });
+        } else {
+            axios({
+                method: 'POST',
+                url: '/api/shopping-list',
+                data: {
+                    name: itemInput,
+                    quantity: quantityInput,
+                    unit: unitInput,
+                },
+            })
+                .then((response) => {
+                    resetForm();
+                    getSupplies();
+                })
+                .catch((error) => {
+                    console.log('Error in POST response from server: ', error);
+                });
+        }
+    };
 
-        
-
-        axios({
-            method: 'POST',
-            url: '/api/shopping-list',
-            data: {
-                name: itemInput,
-                quantity: quantityInput,
-                unit: unitInput
-            }
-        })
-        .then((response) => {
-            setItemInput('');
-            setQuantityInput('');
-            setUnitInput('');
-
-            getSupplies();
-        })
-        .catch ((error) => {
-            console.log('Error in POST response from server: ', error);
-        })
-    }
+    const resetForm = () => {
+        setItemInput('');
+        setQuantityInput('');
+        setUnitInput('');
+        setItemToEdit(null);
+    };
 
     return (
-        <div className= "shoppingForm">
-            <h2>Add an Item:</h2>
-           <form className="shoppingInputs"onSubmit={addItem}>
+        <<div className= "shoppingForm">
+            <h2>{itemToEdit ? 'Edit Item' : 'Add an Item'}:</h2>
+            <form className="shoppingInputs" onSubmit={addItem}>
+        
             <label htmlFor="item-input">Item:</label>
                 <input
                     id="item-input"
                     value={itemInput}
-                    onChange={(event) => {setItemInput(event.target.value)}}
+                    onChange={(event) => setItemInput(event.target.value)}
                     type="text"
                     placeholder=""
                     required /> <sup>*</sup>
@@ -64,6 +90,8 @@ console.log('itemInput is:', itemInput, 'quantityInput is:', quantityInput)
                         placeholder=""/>
                 <button>Save</button>
                 <p id="caption">* Required Field</p>
+    <button>{itemToEdit ? 'Update' : 'Save'}</button>
+                {itemToEdit && <button onClick={resetForm}>Cancel</button>}
             </form>
         </div>
     )
