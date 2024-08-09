@@ -52,8 +52,8 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
                 });
         }
     };
-
-    const resetForm = () => {
+  
+   const resetForm = () => {
         setItemInput('');
         setQuantityInput('');
         setUnitInput('');
@@ -61,33 +61,39 @@ function ShoppingForm({ getSupplies, itemToEdit, setItemToEdit }) {
     };
 
     return (
-        <<div className= "shoppingForm">
-            <h2>{itemToEdit ? 'Edit Item' : 'Add an Item'}:</h2>
+        <div className="shoppingForm">
+             <h2>{itemToEdit ? 'Edit Item' : 'Add an Item'}:</h2>
             <form className="shoppingInputs" onSubmit={addItem}>
-        
-            <label htmlFor="item-input">Item:</label>
+                <label htmlFor="item-input">Item: <span class="error-valid">*</span></label>
                 <input
                     id="item-input"
                     value={itemInput}
-                    onChange={(event) => setItemInput(event.target.value)}
+                    onChange={(event) => { setItemInput(event.target.value) }}
                     type="text"
                     placeholder=""
-                    required /> <sup>*</sup>
-                <label htmlFor="quantity-input">Quantity:</label>
+                    required />
+                
+                <div id="quantunit">
+                    <div id="quant-child">
+                <label htmlFor="quantity-input">Quantity: <span class="error-valid">*</span></label>
                     <input
                         id="quantity-input"
                         value={quantityInput}
-                        onChange={(event) => {setQuantityInput(event.target.value)}}
+                        onChange={(event) => { setQuantityInput(event.target.value) }}
                         type="text"
                         placeholder=""
-                        required /> <sup>*</sup>
-                <label htmlFor="unit-input">Unit:</label>
-                    <input
-                    id="unit-input"
-                        value={unitInput}
-                        onChange={(event) => {setUnitInput(event.target.value)}}
-                        type="text"
-                        placeholder=""/>
+                        required /> 
+                   </div>
+                    <div id="unit-child">
+                        <label htmlFor="unit-input">Unit:</label>
+                        <input
+                            id="unit-input"
+                            value={unitInput}
+                            onChange={(event) => { setUnitInput(event.target.value) }}
+                            type="text"
+                            placeholder="" />
+                    </div>
+                </div>
                 <button>Save</button>
                 <p id="caption">* Required Field</p>
     <button>{itemToEdit ? 'Update' : 'Save'}</button>
